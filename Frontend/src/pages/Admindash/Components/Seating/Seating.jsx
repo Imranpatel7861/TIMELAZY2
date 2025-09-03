@@ -35,24 +35,28 @@ const Seating = () => {
   const [examTimeTo, setExamTimeTo] = useState('');
   const [seatingMode, setSeatingMode] = useState("one");
   const [allClassrooms, setAllClassrooms] = useState([]);
-  const [supervisors, setSupervisors] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch supervisors and classrooms from backend
+  // Fetch classrooms and teachers from backend
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
-        const [supervisorsResponse, classroomsResponse] = await Promise.all([
-          fetch('http://localhost:5000/api/supervisors'),
-          fetch('http://localhost:5000/api/classrooms')
+        const [classroomsResponse, teachersResponse] = await Promise.all([
+          fetch('http://localhost:5000/api/classrooms'),
+          fetch('http://localhost:5000/api/teachers')
         ]);
 
-        const supervisorsData = await supervisorsResponse.json();
         const classroomsData = await classroomsResponse.json();
+        const teachersData = await teachersResponse.json();
 
-        setSupervisors(supervisorsData);
         setAllClassrooms(classroomsData);
+        setTeachers(teachersData);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -89,9 +93,29 @@ const Seating = () => {
     setClassrooms(newClassrooms);
   };
 
-  const handleClassroomChange = (index, field, value) => {
+  const handleClassroomChange = async (index, field, value) => {
     const updated = [...classrooms];
     updated[index][field] = value;
+
+    if (field === 'name') {
+      // Find the selected classroom
+      const selectedClassroom = allClassrooms.find(c => c.name === value);
+
+      if (selectedClassroom) {
+        try {
+          // Fetch the teacher name for this classroom
+          const response = await fetch(`http://localhost:5000/api/classroom-teacher?classroom_id=${selectedClassroom.id}`);
+          const data = await response.json();
+
+          if (data.teacher_name) {
+            updated[index].supervisor = data.teacher_name;
+          }
+        } catch (error) {
+          console.error("Error fetching teacher for classroom:", error);
+        }
+      }
+    }
+
     setClassrooms(updated);
   };
 
@@ -450,7 +474,7 @@ const Seating = () => {
           overflow: 'linebreak',
         },
         headStyles: {
-          fillColor: [63, 81, 181],
+          fillColor: [59, 130, 246],
           textColor: 255,
           halign: 'center',
         },
@@ -568,7 +592,9 @@ const Seating = () => {
           </div>
         </div>
         <div className={styles.content}>
-          {currentStep === 1 ? (
+          {isLoading ? (
+            <div className={styles.loading}>Loading data...</div>
+          ) : currentStep === 1 ? (
             <div>
               <h2 className={styles.stepTitle}>
                 <MapPin className={styles.stepTitleIcon} />
@@ -643,18 +669,13 @@ const Seating = () => {
                     </div>
                     <div>
                       <label className={styles.label}>Supervisor</label>
-                      <select
+                      <input
+                        type="text"
                         value={room.supervisor}
-                        onChange={(e) => handleClassroomChange(index, 'supervisor', e.target.value)}
+                        readOnly
                         className={styles.input}
-                      >
-                        <option value="">Select Supervisor</option>
-                        {supervisors.map((supervisor) => (
-                          <option key={supervisor.id} value={supervisor.name}>
-                            {supervisor.name}
-                          </option>
-                        ))}
-                      </select>
+                        placeholder="Supervisor will be auto-filled"
+                      />
                     </div>
                     <div>
                       <label className={styles.label}>Number of Benches</label>
