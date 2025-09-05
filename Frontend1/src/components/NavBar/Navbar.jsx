@@ -116,11 +116,12 @@ const Navbar = () => {
                     key={item.to}
                     to={item.to}
                     onClick={closeDropdown}
-                    className={`
-                      block px-4 py-3 text-sm font-medium
-                      ${isDark ? 'text-gray-200 hover:text-blue-400 hover:bg-gray-700/50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'}
-                      transition-colors duration-200
-                    `}
+                   className={`
+  px-4 py-2 rounded-lg font-large text-xl
+  ${isDark ? 'text-gray-100 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'}
+  transition-colors duration-200
+`}
+
                   >
                     {item.label}
                   </Link>
