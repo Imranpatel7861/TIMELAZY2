@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import Contact from './pages/ContactUs';
 import Feedback from './pages/Feedback';
@@ -31,7 +30,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Loading />} />
         <Route path="/Landing" element={<MainPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/ContactUs" element={<Contact />} />
         <Route path="/Loginper" element={<LoginPer />} />

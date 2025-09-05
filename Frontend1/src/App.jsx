@@ -1,12 +1,18 @@
 import React from "react";
-import AddUser from "./components/AddUser";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainPage from "./pages/MainPage/MainPage";
+import About from "./pages/AboutUs/Aboutus";
+import ContactUs from "./pages/ContactUs/ContactUs";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-center text-2xl my-4">User Management</h1>
-      <AddUser />
-    </div>
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<MainPage />} />
+    <Route path="/About" element={<About/>} />
+    <Route path="/Contactus" element={<ContactUs/>}/>
+    </Routes>
+  </BrowserRouter>
   );
 }
 
