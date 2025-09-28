@@ -1,50 +1,42 @@
-/* Compare.module.css */
-
 :root {
-  --background: #ffffff;
+  --background-color: #ffffff;
   --text-color: #000000;
-  --card-bg: #f9f9f9;
+  --card-background: #f9f9f9;
   --card-text: #000000;
+  --ai-color: #4a6cf7;
+  --manual-color: #ff6b6b;
 }
 
 [data-theme='dark'] {
-  --background: #121212;
+  --background-color: #121212;
   --text-color: #ffffff;
-  --card-bg: #1e1e1e;
+  --card-background: #1e1e1e;
   --card-text: #ffffff;
 }
 
-.comparisonContainer {
+.compareContainer {
   max-width: 1400px;
   width: 100%;
-  background: var(--card-bg);
-  color: var(--text-color);
+  background: var(--card-background);
+  color: var(--card-text);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transform: translateY(20px) rotateX(5deg);
-  opacity: 0;
-  animation: fadeInUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.3s;
-  transition: all 0.5s ease-in-out;
-  transform-style: preserve-3d;
-  position: relative;
   margin: 100px auto;
-}
-
-.comparisonContainer:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  transform: translateY(-10px) rotateX(0deg);
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 @keyframes fadeInUp {
   to {
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
-.comparisonHeader {
-  background: linear-gradient(135deg, #4a6cf7 0%, #2541b2 100%);
+.compareHeader {
+  background: linear-gradient(135deg, var(--ai-color) 0%, #2541b2 100%);
   color: white;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -52,14 +44,14 @@
   overflow: hidden;
 }
 
-.comparisonHeader:before {
+.compareHeader::before {
   content: '';
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
   animation: headerGlow 8s linear infinite;
 }
 
@@ -68,14 +60,14 @@
   100% { transform: rotate(360deg); }
 }
 
-.comparisonHeader h2 {
+.compareTitle {
   font-size: 2.2rem;
   margin-bottom: 0.8rem;
   position: relative;
   display: inline-block;
 }
 
-.comparisonHeader h2:after {
+.compareTitle::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -91,7 +83,7 @@
   to { transform: scaleX(1); }
 }
 
-.comparisonHeader p {
+.compareSubtitle {
   opacity: 0;
   transform: translateY(10px);
   animation: fadeInSubtitle 1s ease forwards 1.5s;
@@ -104,59 +96,51 @@
   }
 }
 
-.comparisonTable {
+.compareTable {
   width: 100%;
   border-collapse: collapse;
 }
 
-.comparisonTable th, .comparisonTable td {
+.compareTableHeader {
   padding: 1.5rem;
   text-align: center;
-  border-bottom: 1px solid #eee;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.comparisonTable th {
   font-weight: 600;
-  background-color: var(--card-bg);
+  background-color: var(--card-background);
 }
 
-.featureCell {
+.featureNameCell {
   text-align: left;
   font-weight: 500;
-  color: var(--text-color);
+  padding: 1.5rem;
   width: 30%;
   position: relative;
-  overflow: hidden;
 }
 
-.featureCell:before {
+.featureNameCell::before {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 3px;
   height: 0;
-  background: linear-gradient(to bottom, #4a6cf7, #2541b2);
+  background: linear-gradient(to bottom, var(--ai-color), #2541b2);
   transition: height 0.3s ease;
 }
 
-.comparisonTable tr:hover .featureCell:before {
+.compareTable tr:hover .featureNameCell::before {
   height: 100%;
-  animation: featureHighlight 0.5s ease;
 }
 
-@keyframes featureHighlight {
-  0% { height: 0; }
-  100% { height: 100%; }
+.aiFeatureCell, .manualFeatureCell {
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.aiCell {
+.aiFeatureCell {
   background-color: rgba(74, 108, 247, 0.05);
 }
 
-.manualCell {
+.manualFeatureCell {
   background-color: rgba(255, 107, 107, 0.05);
 }
 
@@ -167,27 +151,12 @@
   font-size: 0.8rem;
   font-weight: 600;
   margin-bottom: 0.8rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
 }
 
 .aiBadge {
-  background-color: #4a6cf7;
+  background-color: var(--ai-color);
   color: white;
   animation: pulseBadge 3s infinite;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.aiBadge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(74, 108, 247, 0.4);
-}
-
-.manualBadge {
-  background-color: #ff6b6b;
-  color: white;
 }
 
 @keyframes pulseBadge {
@@ -196,29 +165,46 @@
   100% { box-shadow: 0 0 0 0 rgba(74, 108, 247, 0); }
 }
 
-.icon {
+.manualBadge {
+  background-color: var(--manual-color);
+  color: white;
+}
+
+.featureContent {
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.aiFeatureCell:hover .featureContent,
+.manualFeatureCell:hover .featureContent {
+  transform: translateY(-5px);
+}
+
+.featureIcon {
   font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-  display: inline-block;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  position: relative;
+  margin-bottom: 0.5rem;
 }
 
-.aiCell .icon {
-  color: #4a6cf7;
+.aiFeatureCell .featureIcon {
+  color: var(--ai-color);
 }
 
-.manualCell .icon {
-  color: #ff6b6b;
+.manualFeatureCell .featureIcon {
+  color: var(--manual-color);
 }
 
-.highlight {
+.featureHighlight {
+  font-weight: 600;
   position: relative;
   display: inline-block;
-  z-index: 1;
 }
 
-.highlight:after {
+.featureHighlight::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -232,11 +218,11 @@
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.aiCell:hover .highlight:after {
+.aiFeatureCell:hover .featureHighlight::after {
   transform: scaleX(1);
 }
 
-.bestFeature:before {
+.bestFeature::before {
   content: '★';
   position: absolute;
   top: -18px;
@@ -248,13 +234,12 @@
   transition: all 0.5s ease;
 }
 
-.aiCell:hover .bestFeature:before {
+.aiFeatureCell:hover .bestFeature::before {
   opacity: 1;
   transform: rotate(360deg);
 }
 
-.progressContainer {
-  position: relative;
+.featureProgressContainer {
   height: 5px;
   width: 100%;
   background: #f1f1f1;
@@ -266,54 +251,43 @@
   transition: all 0.5s ease;
 }
 
-.aiCell:hover .progressContainer,
-.manualCell:hover .progressContainer {
+.aiFeatureCell:hover .featureProgressContainer,
+.manualFeatureCell:hover .featureProgressContainer {
   opacity: 1;
   transform: scaleX(1);
 }
 
-.progressBar {
+.featureProgressBar {
   height: 100%;
   width: 0%;
   border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: width 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: width 1s ease;
 }
 
-.aiCell .progressBar {
-  background: linear-gradient(to right, #4a6cf7, #63b3ed);
+.aiFeatureCell .featureProgressBar {
+  background: linear-gradient(to right, var(--ai-color), #63b3ed);
 }
 
-.manualCell .progressBar {
-  background: linear-gradient(to right, #ff6b6b, #ffb6b9);
-}
-
-.cellContent {
-  transition: transform 0.3s ease;
-  transform-style: preserve-3d;
-}
-
-.aiCell:hover .cellContent {
-  transform: translateZ(20px);
-}
-
-.manualCell:hover .cellContent {
-  transform: translateZ(10px);
+.manualFeatureCell .featureProgressBar {
+  background: linear-gradient(to right, var(--manual-color), #ffb6b9);
 }
 
 @media (max-width: 768px) {
-  .comparisonTable th, .comparisonTable td {
+  .compareTable th, .compareTable td {
     padding: 1rem 0.5rem;
     font-size: 0.9rem;
   }
 
-  .featureCell {
+  .featureNameCell {
     width: 40%;
   }
 
-  .icon {
+  .featureIcon {
     font-size: 1.4rem;
+  }
+
+  .featureContent {
+    min-height: 80px;
+    padding: 0.6rem;
   }
 }

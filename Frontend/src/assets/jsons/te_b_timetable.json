@@ -1,0 +1,263 @@
+{
+  "university": "Pimpri Chinchwad College of Engineering",
+  "department": "Computer Engineering",
+  "academic_year": "2025-26",
+  "term": "1",
+  "effective_from": "2025-07-07",
+  "effective_to": "2025-07-07",
+  "divisions": [
+    {
+      "name": "B",
+      "batches": ["TE-B1", "TE-B2", "TE-B3", "TE-B4"]
+    }
+  ],
+  "faculty": [
+    {
+      "abbr": "NAJ",
+      "name": "Mrs. Nilam A. Jadhav",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "KSC",
+      "name": "Mrs. Ketaki S. Chinchane",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "MNK",
+      "name": "Mrs. Madhuri N. Kumbhar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "SYN",
+      "name": "Dr. Swati Y. Nikam",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "MRB",
+      "name": "Mrs. Minal R. Bodke",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "TVK",
+      "name": "Mrs. Tejali V. Katkar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "TGL",
+      "name": "Mrs. Trupti G. Lonkar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "RRMore",
+      "name": "Mrs. Rashmi R. More",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "TCK",
+      "name": "Mrs. Trupti C. Kherde",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    }
+  ],
+  "rooms": [
+    { "name": "516", "type": "Lab", "capacity": 30 },
+    { "name": "513", "type": "Lab", "capacity": 30 },
+    { "name": "626", "type": "Lab", "capacity": 30 },
+    { "name": "627", "type": "Lab", "capacity": 30 },
+    { "name": "525", "type": "Lab", "capacity": 30 },
+    { "name": "502", "type": "Lab", "capacity": 30 },
+    { "name": "524", "type": "Lab", "capacity": 30 },
+    { "name": "624", "type": "Lab", "capacity": 30 },
+    { "name": "625", "type": "Lab", "capacity": 30 },
+    { "name": "514", "type": "Lab", "capacity": 30 }
+  ],
+  "subjects": [
+    {
+      "code": "AIML-HONOR-627",
+      "name": "Artificial Intelligence & Machine Learning (Honor)",
+      "faculty": ["TVK"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 4,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "DBMS-506",
+      "name": "Database Management Systems",
+      "faculty": ["NAJ"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "TOC-506",
+      "name": "Theory of Computation",
+      "faculty": ["KSC"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 2,
+      "max_per_week": 4,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "SPOS-506",
+      "name": "Systems Programming and Operating System",
+      "faculty": ["MNK"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "CNS-503",
+      "name": "Computer Network and Security",
+      "faculty": ["SYN"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "HCI-506",
+      "name": "Elective-I Human Computer Interaction",
+      "faculty": ["MRB"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 2,
+      "max_per_week": 4,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "DBMSL",
+      "name": "Database Management Systems Lab",
+      "faculty": ["NAJ", "RRMore"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-B1", "faculty": "NAJ", "room": "624" },
+        { "name": "TE-B2", "faculty": "NAJ", "room": "624" },
+        { "name": "TE-B3", "faculty": "RRMore", "room": "513" },
+        { "name": "TE-B4", "faculty": "NAJ", "room": "625" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "CNSL",
+      "name": "Computer Network & Security Lab",
+      "faculty": ["KSC"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-B1", "faculty": "KSC", "room": "502" },
+        { "name": "TE-B2", "faculty": "KSC", "room": "502" },
+        { "name": "TE-B3", "faculty": "KSC", "room": "502" },
+        { "name": "TE-B4", "faculty": "KSC", "room": "502" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "LP-I",
+      "name": "Laboratory Practice - I",
+      "faculty": ["TGL", "TCK", "MRB"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-B1", "faculty": "TGL", "room": "524" },
+        { "name": "TE-B2", "faculty": "TGL", "room": "516" },
+        { "name": "TE-B3", "faculty": "TCK", "room": "524" },
+        { "name": "TE-B4", "faculty": "MRB", "room": "516" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "STCL",
+      "name": "Seminar and Technical Communication",
+      "faculty": ["MNK"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-B1", "faculty": "MNK", "room": "627" },
+        { "name": "TE-B2", "faculty": "MNK", "room": "516" },
+        { "name": "TE-B3", "faculty": "MNK", "room": "516" },
+        { "name": "TE-B4", "faculty": "MNK", "room": "514" }
+      ],
+      "is_mentor": false
+    }
+  ],
+  "mentor_batches": [
+    {
+      "division": "B",
+      "batch": "TE-B1",
+      "mentor": "GRS",
+      "roll_range": ["TE-B01", "TE-B26"]
+    },
+    {
+      "division": "B",
+      "batch": "TE-B2",
+      "mentor": "MNK",
+      "roll_range": ["TE-B27", "TE-B52"]
+    },
+    {
+      "division": "B",
+      "batch": "TE-B3",
+      "mentor": "ADJ",
+      "roll_range": ["TE-B53", "TE-B77"]
+    }
+  ]
+}

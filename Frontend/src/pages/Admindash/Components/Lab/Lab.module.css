@@ -1,87 +1,252 @@
-/* Base Styles */
+/* Dark Theme Variables */
 :root {
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #1e293b;
-  --border: #e2e8f0;
-  --primary: #6366f1;
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #141420;
+  --bg-tertiary: #1a1a2e;
+  --bg-quaternary: #232340;
+  --card-bg: rgba(20, 20, 32, 0.8);
+  --card-border: rgba(16, 185, 129, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --secondary: #06b6d4;
+  --accent: #8b5cf6;
   --danger: #ef4444;
+  --danger-hover: #dc2626;
   --success: #10b981;
+  --warning: #f59e0b;
+  --glow-primary: rgba(16, 185, 129, 0.4);
+  --glow-secondary: rgba(6, 182, 212, 0.3);
+  --glow-accent: rgba(139, 92, 246, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.5);
 }
 
-.labManagerContainer {
+/* Base Styles */
+.animatedBackground {
   min-height: 100vh;
-  background-color: var(--bg);
-  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 30%, var(--bg-tertiary) 70%, var(--bg-quaternary) 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   padding: 2rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Decorations */
+.bgDecoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgCircle1 {
+  position: absolute;
+  top: -15%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 18s ease-in-out infinite;
+}
+
+.bgCircle2 {
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--glow-secondary) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 22s ease-in-out infinite reverse;
+}
+
+.bgCircle3 {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--glow-accent) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 12s ease-in-out infinite;
+}
+
+.bgCircle4 {
+  position: absolute;
+  bottom: 20%;
+  right: 20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 16s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+  33% { transform: translate(25px, -25px) rotate(120deg); }
+  66% { transform: translate(-15px, 15px) rotate(240deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.1); opacity: 0.2; }
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-  width: 100%;
+/* Title Section */
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.titleIcon {
+  color: var(--primary);
+  filter: drop-shadow(0 0 15px var(--glow-primary));
+  animation: rotate 8s linear infinite;
+}
+
+.titleIcon2 {
+  color: var(--secondary);
+  filter: drop-shadow(0 0 15px var(--glow-secondary));
+  animation: bounce 3s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(10deg); }
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
-  margin: 0;
-  background: linear-gradient(90deg, var(--primary), #8b5cf6);
+  color: var(--text-primary);
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease-in-out infinite;
+  text-shadow: 0 0 30px var(--glow-primary);
+  margin: 0;
 }
 
 .subtitle {
   font-size: 1.125rem;
-  color: #64748b;
-  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Content Area */
+.content {
+  width: 100%;
+  max-width: 1200px;
 }
 
 /* Floating Action Button */
 .fab {
   position: fixed;
-  bottom: 55rem;
-  right: 35rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: var(--primary);
-  color: white;
+  top:-30rem;
+  left: 85rem;
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--text-primary);
   border: none;
   border-radius: 50%;
-  font-size: 1.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 25px var(--shadow-dark), 0 0 20px var(--glow-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
+  overflow: hidden;
+  position: relative;
+}
+
+.fab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fab:hover::before {
+  opacity: 1;
 }
 
 .fab:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  transform: scale(1.1) rotate(180deg);
+  box-shadow: 0 12px 35px var(--shadow-dark), 0 0 30px var(--glow-primary);
 }
 
-/* Input Modal */
+.fabRipple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 200;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal.active {
@@ -89,28 +254,89 @@
   pointer-events: all;
 }
 
-.modalContent {
-  background: var(--card);
-  border-radius: 1rem;
-  padding: 2rem;
+.modalBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px var(--shadow-dark), 0 0 30px var(--glow-primary);
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 10;
+}
+
+.modal.active .modalContent {
+  transform: translateY(0);
+}
+
+.modalHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.modalIconWrapper {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 1rem;
+  border-radius: 1rem;
+  color: var(--text-primary);
+  display: inline-flex;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px var(--glow-primary);
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.modalHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.modalHeader p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.inputContainer {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
 .modalInput {
   width: 100%;
-  padding: 0.875rem 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-tertiary);
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
   font-size: 1rem;
+  color: var(--text-primary);
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .modalInput:focus {
   border-color: var(--primary);
+  box-shadow: 0 0 20px var(--glow-primary);
+  background: var(--bg-secondary);
+}
+
+.modalInput::placeholder {
+  color: var(--text-muted);
 }
 
 .modalButtons {
@@ -120,183 +346,410 @@
 }
 
 .modalBtn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 1.75rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .modalBtnPrimary {
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--text-primary);
+  box-shadow: 0 4px 15px var(--glow-primary);
 }
 
 .modalBtnPrimary:hover {
-  background: #5856eb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--glow-primary);
 }
 
 .modalBtnSecondary {
-  background: var(--border);
-  color: var(--text);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
 }
 
 .modalBtnSecondary:hover {
-  background: #cbd5e1;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
-/* Content Area */
-.content {
+/* Laboratory Grid */
+.labGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Laboratory Card */
+.labCard {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.labCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1200px;
+  height: 100%;
+  background: linear-gradient(135deg, var(--glow-primary) 0%, transparent 50%, var(--glow-secondary) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* Loading State */
-.loadingState {
-  text-align: center;
-  padding: 4rem 2rem;
-  font-size: 1.25rem;
-  color: #64748b;
+.labCard:hover::before {
+  opacity: 0.05;
+}
+
+.labCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--glow-primary);
+  border-color: var(--primary);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.labCard:hover .cardGlow {
+  opacity: 0.1;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.labIcon {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px var(--glow-primary);
+  color: var(--text-primary);
+}
+
+.labInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.labLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.labNumber {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.deleteButton {
+  background: linear-gradient(135deg, var(--danger), #f97316);
+  border: none;
+  color: var(--text-primary);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.deleteButton:hover {
+  background: linear-gradient(135deg, var(--danger-hover), #ea580c);
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
 }
 
 /* Empty State */
 .emptyState {
   text-align: center;
   padding: 4rem 2rem;
-  color: #64748b;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  animation: fadeIn 0.8s ease-out;
-}
-
-.emptyIcon {
-  margin-bottom: 1rem;
-}
-
-.emptyTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-}
-
-.emptySubtitle {
-  font-size: 1rem;
-  margin: 0;
-}
-
-/* Lab Grid */
-.labGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
 
-/* Lab Card */
-.labCard {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
+.emptyIcon {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 2rem;
+  border-radius: 2rem;
+  color: var(--text-primary);
+  box-shadow: 0 8px 25px var(--glow-primary);
+  animation: float2 3s ease-in-out infinite;
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.emptyState h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.emptyState p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 4rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  gap: 2rem;
 }
 
-.labCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+.loading p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
 }
 
-.cardHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--bg-tertiary);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 20px var(--glow-primary);
 }
 
-.labIcon {
-  background-color: #f3f4f6;
-  color: var(--primary);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  display: inline-flex;
-}
-
-.labNumber {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text);
-  flex-grow: 1;
-  padding-right: 85px;
-  padding-left: 10px;
-}
-
-.deleteButton {
-  background-color: var(--danger);
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 0.375rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.deleteButton:hover {
-  background-color: #dc2626;
-  transform: scale(1.05);
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Error and Success Messages */
-.errorBox {
-  background-color: #fee2e2;
-  border: 1px solid #fca5a5;
-  color: #ef4444;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  animation: fadeInDown 0.3s ease-out;
+.error {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+  animation: slideInDown 0.3s ease-out;
 }
 
-.successBox {
-  background-color: #dcfce7;
-  border: 1px solid #bbf7d0;
-  color: #059669;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  animation: fadeInDown 0.3s ease-out;
+.success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+  animation: slideInDown 0.3s ease-out;
 }
 
-/* Animations */
-@keyframes fadeInDown {
+@keyframes slideInDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
+  .animatedBackground {
+    padding: 1rem;
+  }
+  
   .labGrid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
+  
   .fab {
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
+  
+  .modalContent {
+    margin: 1rem;
+    padding: 2rem;
+  }
+  
+  .labCard {
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .titleContainer {
+    gap: 1rem;
+  }
+  
+  .modalButtons {
+    flex-direction: column;
+  }
+  
+  .modalBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardHeader {
+    gap: 1rem;
+  }
+  
+  .labIcon {
+    padding: 0.75rem;
+  }
+  
+  .labNumber {
+    font-size: 1.125rem;
+  }
+  
+  .bgCircle1, .bgCircle2 {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .bgCircle3, .bgCircle4 {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .titleIcon, .titleIcon2 {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Additional hover effects and micro-animations */
+.labCard .labIcon {
+  transition: all 0.3s ease;
+}
+
+.labCard:hover .labIcon {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 20px var(--glow-primary);
+}
+
+.modalIconWrapper {
+  transition: all 0.3s ease;
+}
+
+.modal.active .modalIconWrapper {
+  animation: modalIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes modalIconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Particle effect for background */
+.bgDecoration::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(16, 185, 129, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(6, 182, 212, 0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(245, 158, 11, 0.2), transparent);
+  background-repeat: repeat;
+  background-size: 150px 100px;
+  animation: sparkle 20s linear infinite;
+}
+
+@keyframes sparkle {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(-100px) translateX(-100px); }
+}
+
+/* Enhanced focus states for accessibility */
+.modalInput:focus-visible,
+.modalBtn:focus-visible,
+.deleteButton:focus-visible,
+.fab:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--secondary));
 }

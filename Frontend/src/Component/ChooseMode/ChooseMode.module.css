@@ -1,41 +1,25 @@
-/* ChooseMode.module.css */
-
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
-  --card-bg: #fff;
-  --card-text: #222;
   --subtitle-color: #666;
-  --border-color: rgba(0, 0, 0, 0.05);
+  --card-bg: #ffffff;
+  --card-text: #000000;
+  --card-subtext: #4a5568;
+  --border-color: rgba(0, 0, 0, 0.1);
   --hover-shadow: rgba(0, 0, 0, 0.15);
-  --list-color: #444;
-  --list-hover-color: #333;
-  --checkmark-color: #28a745;
+  --checkmark-color: #38a169;
 }
 
-[data-theme='dark'] {
-  --bg-color: #121212;
-  --text-color: #ffffff;
-  --card-bg: #1e1e1e;
-  --card-text: #e0e0e0;
-  --subtitle-color: #bbbbbb;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --hover-shadow: rgba(255, 255, 255, 0.2);
-  --list-color: #cccccc;
-  --list-hover-color: #ffffff;
-  --checkmark-color: #34d399;
-}
-
-.chooseMode {
-  max-width: 2500px;
+.modeSelectionContainer {
+  max-width: 1400px;
   margin: 0 auto;
   text-align: center;
-  padding: 40px 20px;
+  padding: 80px 20px;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
 
-.chooseMode h2 {
+.modeSelectionHeading {
   font-size: 2.8rem;
   margin-bottom: 15px;
   background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
@@ -44,7 +28,7 @@
   color: transparent;
 }
 
-.subtitle {
+.modeSelectionSubheading {
   color: var(--subtitle-color);
   margin-bottom: 60px;
   font-size: 1.2rem;
@@ -53,36 +37,30 @@
   margin-right: auto;
 }
 
-.cards {
+.modeCardsWrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 55px;
   justify-content: center;
-  align-items: stretch;
+  gap: 30px;
 }
 
-.card {
+.modeCard {
   background-color: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 40px 30px;
+  padding: 30px 20px;
   flex: 1 1 300px;
-  max-width: 430px;
-  min-width: 280px;
+  max-width: 380px;
+  min-height: 500px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: var(--card-text);
-  margin-bottom:100px;
-  
-  
 }
 
-.card:before {
+.modeCard:before {
   content: '';
   position: absolute;
   top: 0;
@@ -92,77 +70,79 @@
   transition: all 0.3s ease;
 }
 
-.card:nth-child(1):before {
+.modeCard:nth-child(1):before {
   background: linear-gradient(90deg, #059669 0%, #41ff9d 100%);
 }
 
-.card:nth-child(2):before {
+.modeCard:nth-child(2):before {
   background: linear-gradient(90deg, #4776E6 0%, #8E54E9 100%);
 }
 
-.card:nth-child(3):before {
+.modeCard:nth-child(3):before {
   background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
 }
 
-.card:hover {
-  transform: translateY(-15px) scale(1.03);
+.modeCard:hover {
+  transform: translateY(-10px);
   box-shadow: 0 20px 40px var(--hover-shadow);
 }
 
-.card:hover:before {
+.modeCard:hover:before {
   height: 8px;
 }
 
-.cardIcon {
-  font-size: 5rem;
-  margin-bottom: 30px;
-  display: inline-block;
-  transition: transform 0.5s ease;
+.modeCardIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--card-text);
 }
 
-.card h3 {
+.modeCardHeading {
   font-size: 1.8rem;
   margin-bottom: 15px;
   color: var(--card-text);
+  text-align: center;
 }
 
-.card p {
-  color: var(--card-text);
-  font-size: 1.3rem;
+.modeCardDescription {
+  color: var(--card-subtext);
+  font-size: 1rem;
   margin-bottom: 25px;
   line-height: 1.6;
+  text-align: center;
 }
 
-.card ul {
+.modeCardFeatures {
   text-align: left;
   margin-bottom: 30px;
-  padding-left: 5px;
+  padding-left: 10px;
   list-style-type: none;
-  font-size: x-large;
+  flex-grow: 1;
 }
 
-.card ul li {
+.modeCardFeatures li {
   margin-bottom: 12px;
-  color: var(--list-color);
+  color: var(--card-subtext);
   position: relative;
-  padding-left: 28px;
+  padding-left: 25px;
   transition: all 0.3s;
 }
 
-.card ul li:before {
+.modeCardFeatures li:before {
   content: '✓';
   position: absolute;
   left: 0;
   color: var(--checkmark-color);
-  font-weight:bolder;
+  font-weight: bold;
 }
 
-.card ul li:hover {
+.modeCardFeatures li:hover {
   transform: translateX(5px);
-  color: var(--list-hover-color);
+  color: var(--card-text);
 }
 
-.btn {
+.modeCardButton {
   display: inline-block;
   padding: 12px 28px;
   border-radius: 30px;
@@ -175,9 +155,11 @@
   z-index: 1;
   border: none;
   cursor: pointer;
+  text-align: center;
+  margin-top: auto;
 }
 
-.btn:after {
+.modeCardButton:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -187,7 +169,7 @@
   z-index: -2;
 }
 
-.btn:before {
+.modeCardButton:before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -199,52 +181,55 @@
   opacity: 0.8;
 }
 
-.btn:hover {
-  color: white;
+.modeCardButton:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn:hover:before {
+.modeCardButton:hover:before {
   width: 100%;
 }
 
-.btn.personal {
+.modeCardButtonPersonal {
   background: linear-gradient(90deg, #059669 0%, #10B981 100%);
 }
 
-.btn.personal:before {
+.modeCardButtonPersonal:before {
   background: linear-gradient(90deg, #10B981 0%, #059669 100%);
 }
 
-.btn.team {
+.modeCardButtonTeam {
   background: linear-gradient(90deg, #4776E6 0%, #8E54E9 100%);
 }
 
-.btn.team:before {
+.modeCardButtonTeam:before {
   background: linear-gradient(90deg, #8E54E9 0%, #4776E6 100%);
 }
 
-.btn.org {
+.modeCardButtonOrg {
   background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
 }
 
-.btn.org:before {
+.modeCardButtonOrg:before {
   background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
 }
 
 @media (max-width: 1024px) {
-  .cards {
+  .modeCardsWrapper {
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .chooseMode h2 {
+  .modeSelectionHeading {
     font-size: 2rem;
   }
 
-  .card {
-    padding: 30px 20px;
+  .modeCard {
+    padding: 20px;
+    max-width: 320px;
+    min-height: 450px;
   }
 }

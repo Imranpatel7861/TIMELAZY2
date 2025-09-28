@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify, request, current_app
-from flask_mysqldb import MySQL
+from flask import Blueprint, jsonify, current_app
 
 seating_bp = Blueprint('seating_bp', __name__)
 
+# Fetch classrooms
 @seating_bp.route('/classrooms', methods=['GET'])
 def get_classrooms():
     try:
@@ -10,19 +10,14 @@ def get_classrooms():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT id, classroom_number FROM classrooms")
         classrooms = cursor.fetchall()
-
-        classrooms_data = [
-            {
-                "id": classroom[0],
-                "name": classroom[1]
-            }
-            for classroom in classrooms
-        ]
         cursor.close()
-        return jsonify(classrooms_data)
+        return jsonify([
+            {"id": c[0], "name": c[1]} for c in classrooms
+        ])
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Fetch teachers/faculty
 @seating_bp.route('/teachers', methods=['GET'])
 def get_teachers():
     try:
@@ -30,47 +25,9 @@ def get_teachers():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT id, name FROM teachers")
         teachers = cursor.fetchall()
-
-        teachers_data = [
-            {
-                "id": teacher[0],
-                "name": teacher[1]
-            }
-            for teacher in teachers
-        ]
         cursor.close()
-        return jsonify(teachers_data)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-@seating_bp.route('/classroom-teacher', methods=['GET'])
-def get_classroom_teacher():
-    classroom_id = request.args.get('classroom_id')
-    if not classroom_id:
-        return jsonify({"error": "classroom_id is required"}), 400
-
-    try:
-        mysql = current_app.mysql
-        cursor = mysql.connection.cursor()
-
-        # Get the admin_id for the classroom
-        cursor.execute("SELECT admin_id FROM classrooms WHERE id = %s", (classroom_id,))
-        classroom = cursor.fetchone()
-
-        if not classroom:
-            return jsonify({"error": "Classroom not found"}), 404
-
-        admin_id = classroom[0]
-
-        # Get the teacher name for the admin_id
-        cursor.execute("SELECT name FROM teachers WHERE admin_id = %s", (admin_id,))
-        teacher = cursor.fetchone()
-
-        cursor.close()
-
-        if not teacher:
-            return jsonify({"error": "Teacher not found for this classroom"}), 404
-
-        return jsonify({"teacher_name": teacher[0]})
+        return jsonify([
+            {"id": t[0], "name": t[1]} for t in teachers
+        ])
     except Exception as e:
         return jsonify({"error": str(e)}), 500

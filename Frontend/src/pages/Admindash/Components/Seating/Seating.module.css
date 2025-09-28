@@ -1,12 +1,13 @@
-/* Seating.module.css */
+/* Seating.module.css - Dark Theme */
 
 .container {
   max-width: 78rem;
   margin: 0 auto;
   padding: 1.5rem;
-  background: linear-gradient(to bottom right, #f0f9ff, #e0e7ff);
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
+  color: #e2e8f0;
 }
 
 .printHidden {
@@ -24,22 +25,25 @@
   .printOnly {
     display: block;
     padding: 2rem;
+    background: white;
+    color: black;
   }
 }
 
 /* Header */
 .header {
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 10px 10px -5px rgb(0 0 0 / 0.2);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  border: 1px solid #475569;
 }
 
 .title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #f1f5f9;
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -47,20 +51,21 @@
 }
 
 .titleIcon {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 
 .subtitle {
-  color: #64748b;
+  color: #94a3b8;
 }
 
 /* Progress */
 .progressContainer {
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 10px 10px -5px rgb(0 0 0 / 0.2);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  border: 1px solid #475569;
 }
 
 .progressHeader {
@@ -73,39 +78,41 @@
 .progressTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #f1f5f9;
 }
 
 .progressPercent {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #3b82f6;
+  color: #60a5fa;
 }
 
 .progressBar {
   width: 100%;
-  background: #e2e8f0;
+  background: #374151;
   border-radius: 9999px;
-  height: 0.375rem;
+  height: 0.5rem;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .progressFill {
-  background: linear-gradient(to right, #3b82f6, #6366f1);
-  height: 0.375rem;
+  background: linear-gradient(to right, #60a5fa, #818cf8);
+  height: 0.5rem;
   border-radius: 9999px;
   transition: all 0.5s ease-out;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
 }
 
 .progressSteps {
   display: flex;
   justify-content: space-between;
   font-size: 0.875rem;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .activeStep {
-  color: #3b82f6;
+  color: #60a5fa;
   font-weight: 500;
 }
 
@@ -123,40 +130,45 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 9999px;
-  background: #d1d5db;
-  color: #6b7280;
+  background: #374151;
+  color: #9ca3af;
+  border: 2px solid #4b5563;
 }
 
 .activeStepIcon {
-  background: #3b82f6;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
   color: white;
+  border-color: #60a5fa;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
 }
 
 .stepLine {
   height: 0.25rem;
   width: 4rem;
-  background: #d1d5db;
+  background: #374151;
   margin: 0 0.5rem;
   align-self: center;
+  border-radius: 0.125rem;
 }
 
 .activeStepLine {
-  background: #3b82f6;
+  background: linear-gradient(to right, #60a5fa, #3b82f6);
 }
 
 /* Content */
 .content {
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 10px 10px -5px rgb(0 0 0 / 0.2);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  border: 1px solid #475569;
 }
 
 .stepTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #f1f5f9;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -164,7 +176,7 @@
 }
 
 .stepTitleIcon {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 
 .formGroup {
@@ -175,38 +187,48 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #475569;
+  color: #cbd5e1;
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
   transition: all 0.2s;
+  background: #374151;
+  color: #f1f5f9;
 }
 
 .input:focus {
   outline: none;
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  border-color: #3b82f6;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+  background: #334155;
+}
+
+.input::placeholder {
+  color: #9ca3af;
 }
 
 /* Classroom Card */
 .classroomCard {
-  background: #f9fafb;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  background: linear-gradient(135deg, #374151, #4b5563);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
   margin-bottom: 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #6b7280;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
 }
 
 .classroomTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #f1f5f9;
   margin-bottom: 0.75rem;
 }
 
@@ -230,21 +252,22 @@
 .divisionTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #f1f5f9;
   margin-bottom: 1rem;
 }
 
 .divisionCard {
-  background: #f9fafb;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  background: linear-gradient(135deg, #374151, #4b5563);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
   margin-bottom: 0.75rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #6b7280;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
 }
 
 .divisionCardTitle {
   font-weight: 500;
-  color: #475569;
+  color: #cbd5e1;
   margin-bottom: 0.75rem;
 }
 
@@ -262,22 +285,25 @@
 
 /* Summary Card */
 .summaryCard {
-  background: #dbeafe;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
   border-left: 0.25rem solid #60a5fa;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
 }
 
 .errorCard {
-  background: #fecaca;
+  background: linear-gradient(135deg, #991b1b, #dc2626);
   border-left: 0.25rem solid #f87171;
+  box-shadow: 0 0 20px rgba(248, 113, 113, 0.3);
 }
 
 .successCard {
-  background: #dcfce7;
+  background: linear-gradient(135deg, #065f46, #059669);
   border-left: 0.25rem solid #34d399;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
 }
 
 .summaryIcon {
@@ -285,24 +311,24 @@
 }
 
 .summaryIconSvg {
-  color: #3b82f6;
+  color: #93c5fd;
 }
 
 .errorIcon {
-  color: #f87171;
+  color: #fca5a5;
 }
 
 .successIcon {
-  color: #059669;
+  color: #6ee7b7;
 }
 
 .summaryText {
   font-weight: 600;
-  color: #1e40af;
+  color: #f1f5f9;
 }
 
 .errorText {
-  color: #dc2626;
+  color: #fca5a5;
   font-size: 0.875rem;
   margin-top: 0.5rem;
 }
@@ -316,10 +342,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 10px 10px -5px rgb(0 0 0 / 0.2);
   padding: 1.5rem;
+  border: 1px solid #475569;
 }
 
 .navButton {
@@ -327,21 +354,25 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: #6b7280;
-  color: white;
+  background: linear-gradient(135deg, #4b5563, #6b7280);
+  color: #f1f5f9;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
 }
 
 .navButton:not(:disabled):hover {
-  background: #4b5563;
+  background: linear-gradient(135deg, #374151, #4b5563);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px -1px rgb(0 0 0 / 0.3);
 }
 
 .navButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .navButtonGroup {
@@ -354,21 +385,25 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
   color: white;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
 }
 
 .nextButton:not(:disabled):hover {
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px -1px rgb(0 0 0 / 0.3);
 }
 
 .nextButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .generateButton {
@@ -376,21 +411,25 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: #10b981;
+  background: linear-gradient(135deg, #10b981, #34d399);
   color: white;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
 }
 
 .generateButton:not(:disabled):hover {
-  background: #059669;
+  background: linear-gradient(135deg, #059669, #10b981);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px -1px rgb(0 0 0 / 0.3);
 }
 
 .generateButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* Toggle */
@@ -411,18 +450,26 @@
 
 .toggleButton {
   flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  background: white;
+  padding: 0.75rem 1rem;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  background: #374151;
+  color: #cbd5e1;
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: 500;
 }
 
 .toggleButton.activeToggle {
-  background: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
   color: white;
-  border-color: #3b82f6;
+  border-color: #60a5fa;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+}
+
+.toggleButton:hover:not(.activeToggle) {
+  background: #4b5563;
+  border-color: #6b7280;
 }
 
 /* Loading */
@@ -430,5 +477,5 @@
   text-align: center;
   padding: 2rem;
   font-size: 1.125rem;
-  color: #64748b;
+  color: #94a3b8;
 }

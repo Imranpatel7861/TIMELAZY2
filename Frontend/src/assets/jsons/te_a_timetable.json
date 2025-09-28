@@ -1,0 +1,243 @@
+{
+  "university": "Pimpri Chinchwad College of Engineering",
+  "department": "Computer Engineering",
+  "academic_year": "2025-26",
+  "term": "1",
+  "effective_from": "2025-07-07",
+  "effective_to": "2025-07-07",
+  "divisions": [
+    {
+      "name": "A",
+      "batches": ["TE-A1", "TE-A2", "TE-A3", "TE-A4"]
+    }
+  ],
+  "faculty": [
+    {
+      "abbr": "SSL",
+      "name": "Mrs. Sonali S. Lunawat",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "DPM",
+      "name": "Mrs. Deepa P. Mahajan",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "SYN",
+      "name": "Dr. Swati Y. Nikam",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "AK",
+      "name": "Dr. Archana Kollu",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "KSC",
+      "name": "Mrs. Ketaki S. Chinchane",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "TVK",
+      "name": "Mrs. Tejali V. Katkar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "PMN",
+      "name": "Faculty PMN",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    }
+  ],
+  "rooms": [
+    { "name": "525", "type": "Lab", "capacity": 30 },
+    { "name": "502", "type": "Lab", "capacity": 30 },
+    { "name": "524", "type": "Lab", "capacity": 30 },
+    { "name": "516", "type": "Lab", "capacity": 30 },
+    { "name": "627", "type": "Lab", "capacity": 30 }
+  ],
+  "subjects": [
+    {
+      "code": "AIML-HONOR-627",
+      "name": "Artificial Intelligence & Machine Learning (Honor)",
+      "faculty": ["TVK"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 4,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "DBMS-619",
+      "name": "Database Management Systems",
+      "faculty": ["SSL"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "TOC-619",
+      "name": "Theory of Computation",
+      "faculty": ["KSC"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 2,
+      "max_per_week": 4,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "SPOS-619",
+      "name": "Systems Programming and Operating System",
+      "faculty": ["DPM"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "CNS-619",
+      "name": "Computer Network and Security",
+      "faculty": ["SYN"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "HCI-619",
+      "name": "Elective-I Human Computer Interaction",
+      "faculty": ["AK"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 2,
+      "max_per_week": 4,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "DBMSL",
+      "name": "Database Management Systems Lab",
+      "faculty": ["SSL", "PMN"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-A1", "faculty": "SSL", "room": "525" },
+        { "name": "TE-A2", "faculty": "SSL", "room": "525" },
+        { "name": "TE-A3", "faculty": "SSL", "room": "525" },
+        { "name": "TE-A4", "faculty": "PMN", "room": "525" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "CNSL",
+      "name": "Computer Network & Security Lab",
+      "faculty": ["SYN"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-A1", "faculty": "SYN", "room": "502" },
+        { "name": "TE-A2", "faculty": "SYN", "room": "502" },
+        { "name": "TE-A3", "faculty": "SYN", "room": "502" },
+        { "name": "TE-A4", "faculty": "SYN", "room": "502" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "LP-I",
+      "name": "Laboratory Practice - I",
+      "faculty": ["DPM", "TVK"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-A1", "faculty": "DPM", "room": "524" },
+        { "name": "TE-A2", "faculty": "DPM", "room": "524" },
+        { "name": "TE-A3", "faculty": "TVK", "room": "516" },
+        { "name": "TE-A4", "faculty": "TVK", "room": "516" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "STCL",
+      "name": "Seminar and Technical Communication",
+      "faculty": ["AK"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-A1", "faculty": "AK", "room": "502" },
+        { "name": "TE-A2", "faculty": "AK", "room": "516" },
+        { "name": "TE-A4", "faculty": "AK", "room": "516" }
+      ],
+      "is_mentor": false
+    }
+  ],
+  "mentor_batches": [
+    {
+      "division": "A",
+      "batch": "TE-A1",
+      "mentor": "SSL",
+      "roll_range": ["TE-A01", "TE-A26"]
+    },
+    {
+      "division": "A",
+      "batch": "TE-A2",
+      "mentor": "SSL",
+      "roll_range": ["TE-A27", "TE-A52"]
+    },
+    {
+      "division": "A",
+      "batch": "TE-A3",
+      "mentor": "DPM",
+      "roll_range": ["TE-A53", "TE-A80"]
+    }
+  ]
+}

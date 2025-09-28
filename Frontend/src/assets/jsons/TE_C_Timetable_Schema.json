@@ -1,0 +1,247 @@
+{
+  "university": "Pimpri Chinchwad College of Engineering",
+  "department": "Computer Engineering",
+  "academic_year": "2025-26",
+  "term": "1",
+  "effective_from": "2025-07-07",
+  "effective_to": "",
+  "divisions": [
+    {
+      "name": "C",
+      "batches": ["TE-C1", "TE-C2", "TE-C3", "TE-C4"]
+    }
+  ],
+  "faculty": [
+    {
+      "abbr": "AKB",
+      "name": "Mrs. Ashwini K. Bhavsar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "SVG",
+      "name": "Dr. Shivganga V. Gavhane",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "TCK",
+      "name": "Mrs. Trupti C. Kherde",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "RSM",
+      "name": "Mrs. Rutuja S. Magar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "MRB",
+      "name": "Mrs. Mrinal R. Bodke",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "PSChavan",
+      "name": "Mrs. Poonam S. Chavan",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "RAJ",
+      "name": "Mrs. Reshma A. Jadhav",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    },
+    {
+      "abbr": "TVK",
+      "name": "Mrs. Tejali V. Katkar",
+      "max_per_day": 5,
+      "max_per_week": 25,
+      "availability": [0, 1, 2, 3, 4]
+    }
+  ],
+  "rooms": [
+    { "name": "524", "type": "Lab", "capacity": 30 },
+    { "name": "525", "type": "Lab", "capacity": 30 },
+    { "name": "526", "type": "Lab", "capacity": 30 },
+    { "name": "502", "type": "Lab", "capacity": 30 },
+    { "name": "624", "type": "Lab", "capacity": 30 },
+    { "name": "516", "type": "Lab", "capacity": 30 },
+    { "name": "627", "type": "Lab", "capacity": 30 }
+  ],
+  "subjects": [
+    {
+      "code": "AIML-HONOR-627",
+      "name": "Artificial Intelligence & Machine Learning (Honor)",
+      "faculty": ["TVK"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 4,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "DBMS-618",
+      "name": "Database Management Systems",
+      "faculty": ["AKB"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "TOC-618",
+      "name": "Theory of Computation",
+      "faculty": ["SVG"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 2,
+      "max_per_week": 4,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "SPOS-618",
+      "name": "Systems Programming and Operating System",
+      "faculty": ["TCK"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "CNS-618",
+      "name": "Computer Network and Security",
+      "faculty": ["RSM"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 3,
+      "max_per_week": 5,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "HCI-618",
+      "name": "Elective-I Human Computer Interaction",
+      "faculty": ["MRB"],
+      "type": "Theory",
+      "room_type": "Theory",
+      "duration": 50,
+      "min_per_week": 2,
+      "max_per_week": 4,
+      "required_room": "",
+      "batches": [],
+      "is_mentor": false
+    },
+    {
+      "code": "DBMSL",
+      "name": "Database Management Systems Lab",
+      "faculty": ["AKB", "RAJ"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-C1", "faculty": "AKB", "room": "525" },
+        { "name": "TE-C2", "faculty": "RAJ", "room": "525" },
+        { "name": "TE-C3", "faculty": "AKB", "room": "524" },
+        { "name": "TE-C4", "faculty": "RAJ", "room": "524" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "CNSL",
+      "name": "Computer Network & Security Lab",
+      "faculty": ["RSM"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-C1", "faculty": "RSM", "room": "502" },
+        { "name": "TE-C2", "faculty": "RSM", "room": "502" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "LP-I",
+      "name": "Laboratory Practice - I",
+      "faculty": ["TCK", "MRB"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-C3", "faculty": "TCK", "room": "524" },
+        { "name": "TE-C4", "faculty": "MRB", "room": "624" }
+      ],
+      "is_mentor": false
+    },
+    {
+      "code": "STCL",
+      "name": "Seminar and Technical Communication",
+      "faculty": ["PSChavan"],
+      "type": "Lab",
+      "room_type": "Lab",
+      "duration": 150,
+      "min_per_week": 1,
+      "max_per_week": 1,
+      "required_room": "",
+      "batches": [
+        { "name": "TE-C4", "faculty": "PSChavan", "room": "516" },
+        { "name": "TE-C2", "faculty": "PSChavan", "room": "627" }
+      ],
+      "is_mentor": false
+    }
+  ],
+  "mentor_batches": [
+    {
+      "division": "C",
+      "batch": "TE-C1",
+      "mentor": "RSM",
+      "roll_range": ["TE-C01", "TE-C26"]
+    },
+    {
+      "division": "C",
+      "batch": "TE-C2",
+      "mentor": "SVG",
+      "roll_range": ["TE-C27", "TE-C52"]
+    },
+    {
+      "division": "C",
+      "batch": "TE-C3",
+      "mentor": "SKR",
+      "roll_range": ["TE-C53", "TE-C76"]
+    }
+  ]
+}

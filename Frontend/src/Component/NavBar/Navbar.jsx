@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../Theme/ThemeContext';
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/timelazynewlogo.jpg';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

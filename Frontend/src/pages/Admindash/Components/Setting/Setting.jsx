@@ -14,13 +14,17 @@ const Setting = () => {
     profilePic: null,
     profilePicURL: 'https://via.placeholder.com/100',
   });
+  
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const navigate = useNavigate();
 
-  // ✅ Load current profile on mount
+  // Load current profile on mount
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
     if (storedEmail) {
+      setIsLoading(true);
       axios
         .get(`http://localhost:5000/api/profile?email=${storedEmail}`)
         .then((res) => {
@@ -50,6 +54,9 @@ const Setting = () => {
         })
         .catch((err) => {
           console.error('Failed to fetch profile:', err);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   }, []);
@@ -63,6 +70,18 @@ const Setting = () => {
     if (name === 'profilePhoto') {
       const file = files[0];
       if (file) {
+        // Validate file size (5MB limit)
+        if (file.size > 5 * 1024 * 1024) {
+          alert('File size should be less than 5MB');
+          return;
+        }
+        
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+          alert('Please select a valid image file');
+          return;
+        }
+        
         const url = URL.createObjectURL(file);
         setFormData((prev) => ({
           ...prev,
@@ -80,13 +99,26 @@ const Setting = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name.trim()) {
+      alert('Please enter your full name');
+      return;
+    }
+    
+    if (!formData.email.trim()) {
+      alert('Please enter your email address');
+      return;
+    }
+    
+    setIsSaving(true);
     const payload = new FormData();
-    payload.append('name', formData.name);
-    payload.append('email', formData.email);
+    payload.append('name', formData.name.trim());
+    payload.append('email', formData.email.trim());
     payload.append('gender', formData.gender);
-    payload.append('organization', formData.organization);
-    payload.append('phone', formData.phone);
-    payload.append('address', formData.address);
+    payload.append('organization', formData.organization.trim());
+    payload.append('phone', formData.phone.trim());
+    payload.append('address', formData.address.trim());
     if (formData.profilePic) {
       payload.append('profilePic', formData.profilePic);
     }
@@ -97,17 +129,22 @@ const Setting = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      alert('Changes saved!');
+      
+      // Success animation could be added here
+      alert('Changes saved successfully!');
 
-      // ✅ Update localStorage instantly for Admindash
+      // Update localStorage instantly for Admindash
       if (res.data && res.data.profile_pic) {
         localStorage.setItem('profileImage', res.data.profile_pic);
       }
-      localStorage.setItem('userName', formData.name);
-      localStorage.setItem('userEmail', formData.email);
+      localStorage.setItem('userName', formData.name.trim());
+      localStorage.setItem('userEmail', formData.email.trim());
     } catch (err) {
       console.error('Profile update failed:', err);
-      alert('Failed to save changes.');
+      const errorMessage = err.response?.data?.message || 'Failed to save changes. Please try again.';
+      alert(errorMessage);
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -118,6 +155,9 @@ const Setting = () => {
           src={formData.profilePicURL}
           alt="Profile"
           className={styles.avatar}
+          onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/150?text=Profile';
+          }}
         />
         <div>
           <h2 className={styles.heading}>Profile Settings</h2>
@@ -137,6 +177,7 @@ const Setting = () => {
             accept="image/*"
             onChange={handleChange}
             className={styles.inputFile}
+            disabled={isLoading || isSaving}
           />
         </div>
 
@@ -147,9 +188,11 @@ const Setting = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Full Name"
+            placeholder="Enter your full name"
             className={styles.input}
             required
+            disabled={isLoading || isSaving}
+            maxLength={100}
           />
         </div>
 
@@ -160,10 +203,29 @@ const Setting = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Email ID"
+            placeholder="Enter your email address"
             className={styles.input}
             required
+            disabled={isLoading || isSaving}
+            maxLength={100}
           />
+        </div>
+
+        <div className={styles.inputGroup}>
+          <label>Gender</label>
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className={styles.input}
+            disabled={isLoading || isSaving}
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="prefer_not_to_say">Prefer not to say</option>
+          </select>
         </div>
 
         <div className={styles.inputGroup}>
@@ -173,31 +235,55 @@ const Setting = () => {
             name="organization"
             value={formData.organization}
             onChange={handleChange}
-            placeholder="Organization Name"
+            placeholder="Enter your organization name"
             className={styles.input}
+            disabled={isLoading || isSaving}
+            maxLength={100}
           />
         </div>
 
         <div className={styles.inputGroup}>
           <label>Phone Number</label>
           <input
-            type="text"
+            type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Phone Number"
+            placeholder="Enter your phone number"
             className={styles.input}
+            disabled={isLoading || isSaving}
+            maxLength={15}
+          />
+        </div>
+
+        <div className={styles.inputGroup}>
+          <label>Address</label>
+          <textarea
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Enter your address"
+            className={styles.input}
+            rows="3"
+            disabled={isLoading || isSaving}
+            maxLength={500}
+            style={{ resize: 'vertical', minHeight: '80px' }}
           />
         </div>
 
         <div className={styles.buttonRow}>
-          <button type="submit" className={styles.saveBtn}>
-            Save Changes
+          <button 
+            type="submit" 
+            className={styles.saveBtn}
+            disabled={isLoading || isSaving}
+          >
+            {isSaving ? 'Saving...' : 'Save Changes'}
           </button>
           <button
             type="button"
             className={styles.passwordBtn}
             onClick={handleChangePasswordClick}
+            disabled={isLoading || isSaving}
           >
             Change Password
           </button>

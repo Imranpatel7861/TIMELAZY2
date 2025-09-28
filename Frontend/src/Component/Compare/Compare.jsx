@@ -1,6 +1,5 @@
-
 import React, { useEffect } from 'react';
-import styles from './Compare.module.css';
+import compareStyles from './Compare.module.css';
 import { useTheme } from '../Theme/ThemeContext';
 
 const Compare = () => {
@@ -15,156 +14,146 @@ const Compare = () => {
       });
     }, { threshold: 0.1 });
 
-    const container = document.querySelector(`.${styles.comparisonContainer}`);
-    if (container) {
-      observer.observe(container);
-    }
+    const container = document.querySelector(`.${compareStyles.compareContainer}`);
+    if (container) observer.observe(container);
 
-    const cells = document.querySelectorAll(`.${styles.aiCell}, .${styles.manualCell}`);
+    const cells = document.querySelectorAll(`.${compareStyles.aiFeatureCell}, .${compareStyles.manualFeatureCell}`);
     cells.forEach(cell => {
       cell.addEventListener('mouseenter', () => {
-        const progressBar = cell.querySelector(`.${styles.progressBar}`);
+        const progressBar = cell.querySelector(`.${compareStyles.featureProgressBar}`);
         const value = progressBar.getAttribute('data-value');
         progressBar.style.width = `${value}%`;
       });
-
       cell.addEventListener('mouseleave', () => {
-        const progressBar = cell.querySelector(`.${styles.progressBar}`);
+        const progressBar = cell.querySelector(`.${compareStyles.featureProgressBar}`);
         progressBar.style.width = '0%';
       });
     });
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div
-      className={`${styles.comparisonContainer} ${theme === 'dark' ? styles.dark : ''}`}
-      id="comparison-container"
-    >
-      <div className={styles.comparisonHeader}>
-        <h2>AI vs Manual Timetable Creation</h2>
-        <p>Discover why TimeLazy's AI outperforms traditional methods</p>
+    <div className={`${compareStyles.compareContainer} ${theme === 'dark' ? compareStyles.darkTheme : ''}`} id="compare-container">
+      <div className={compareStyles.compareHeader}>
+        <h2 className={compareStyles.compareTitle}>AI vs Manual Timetable Creation</h2>
+        <p className={compareStyles.compareSubtitle}>Discover why TimeLazy's AI outperforms traditional methods</p>
       </div>
-
-      <table className={styles.comparisonTable}>
+      <table className={compareStyles.compareTable}>
         <thead>
           <tr>
-            <th>Feature</th>
-            <th><span className={styles.aiBadge}>TimeLazy AI</span></th>
-            <th><span className={styles.manualBadge}>Manual Tools</span></th>
+            <th className={compareStyles.compareTableHeader}>Feature</th>
+            <th className={compareStyles.compareTableHeader}><span className={compareStyles.aiBadge}>TimeLazy AI</span></th>
+            <th className={compareStyles.compareTableHeader}><span className={compareStyles.manualBadge}>Manual Tools</span></th>
           </tr>
         </thead>
-        
-          <tbody>
-         <tr>
-        <td className={styles.featureCell}>Speed</td>
-             <td className={styles.aiCell}>
-               <div className={styles.cellContent}>
-                 <i className="fas fa-bolt icon"></i><br />
-                 <span className={`${styles.highlight} ${styles.bestFeature}`}>30 seconds</span>
-                 <div className={styles.progressContainer}>
-                   <div className={styles.progressBar} data-value="95"></div>
-                 </div>
-               </div>
-             </td>
-             <td className={styles.manualCell}>
-               <div className={styles.cellContent}>
-                <i className="fas fa-hourglass-half icon"></i><br />
-                 1+ hour
-                 <div className={styles.progressContainer}>
-                   <div className={styles.progressBar} data-value="20"></div>
-                 </div>
-               </div>
-             </td>
-           </tr>
-           <tr>
-            <td className={styles.featureCell}>Conflict Detection</td>
-            <td className={styles.aiCell}>
-              <div className={styles.cellContent}>
-                 <i className="fas fa-check-circle icon"></i><br />
-                 <span className={`${styles.highlight} ${styles.bestFeature}`}>Auto-fixed</span>
-                <div className={styles.progressContainer}>
-                  <div className={styles.progressBar} data-value="90"></div>
-                 </div>
-               </div>
+        <tbody>
+          <tr>
+            <td className={compareStyles.featureNameCell}>Speed</td>
+            <td className={compareStyles.aiFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-bolt ${compareStyles.featureIcon}`}></i>
+                <span className={`${compareStyles.featureHighlight} ${compareStyles.bestFeature}`}>30 seconds</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="95"></div>
+                </div>
+              </div>
             </td>
-            <td className={styles.manualCell}>
-              <div className={styles.cellContent}>
-                <i className="fas fa-exclamation-triangle icon"></i><br />
-                Manual checks
-                <div className={styles.progressContainer}>
-                  <div className={styles.progressBar} data-value="30"></div>
+            <td className={compareStyles.manualFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-hourglass-half ${compareStyles.featureIcon}`}></i>
+                <span>1+ hour</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="20"></div>
                 </div>
               </div>
             </td>
           </tr>
           <tr>
-            <td className={styles.featureCell}>Optimization</td>
-            <td className={styles.aiCell}>
-              <div className={styles.cellContent}>
-                <i className="fas fa-brain icon"></i><br />
-                <span className={`${styles.highlight} ${styles.bestFeature}`}>AI-driven</span>
-                <div className={styles.progressContainer}>
-                  <div className={styles.progressBar} data-value="100"></div>
+            <td className={compareStyles.featureNameCell}>Conflict Detection</td>
+            <td className={compareStyles.aiFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-check-circle ${compareStyles.featureIcon}`}></i>
+                <span className={`${compareStyles.featureHighlight} ${compareStyles.bestFeature}`}>Auto-fixed</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="90"></div>
                 </div>
               </div>
             </td>
-            <td className={styles.manualCell}>
-              <div className={styles.cellContent}>
-                <i className="fas fa-dice icon"></i><br />
-                Guesswork
-                 <div className={styles.progressContainer}>
-                   <div className={styles.progressBar} data-value="40"></div>
-                 </div>
-               </div>
-            </td>
-           </tr>
-          <tr>
-            <td className={styles.featureCell}>Personalization</td>
-            <td className={styles.aiCell}>
-              <div className={styles.cellContent}>
-                <i className="fas fa-user-cog icon"></i><br />
-                 <span className={`${styles.highlight} ${styles.bestFeature}`}>Energy & focus-based</span>
-                <div className={styles.progressContainer}>
-                   <div className={styles.progressBar} data-value="85"></div>
-                 </div>
-               </div>
-             </td>
-             <td className={styles.manualCell}>
-               <div className={styles.cellContent}>
-               <i className="fas fa-user icon"></i><br />
-                 Basic preferences
-                 <div className={styles.progressContainer}>
-                  <div className={styles.progressBar} data-value="50"></div>
-                 </div>
-              </div>
-           </td>
-           </tr>
-           <tr>
-             <td className={styles.featureCell}>Updates</td>
-             <td className={styles.aiCell}>
-               <div className={styles.cellContent}>
-                 <i className="fas fa-sync-alt icon"></i><br />
-                 <span className={styles.highlight}>Instant adjustments</span>
-                 <div className={styles.progressContainer}>
-                   <div className={styles.progressBar} data-value="95"></div>
+            <td className={compareStyles.manualFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-exclamation-triangle ${compareStyles.featureIcon}`}></i>
+                <span>Manual checks</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="30"></div>
                 </div>
               </div>
             </td>
-           <td className={styles.manualCell}>
-               <div className={styles.cellContent}>
-                 <i className="fas fa-eraser icon"></i><br />
-                Start from scratch
-                <div className={styles.progressContainer}>
-                   <div className={styles.progressBar} data-value="25"></div>
-                </div>
-              </div>
-             </td>
           </tr>
-                </tbody>
+          <tr>
+            <td className={compareStyles.featureNameCell}>Optimization</td>
+            <td className={compareStyles.aiFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-brain ${compareStyles.featureIcon}`}></i>
+                <span className={`${compareStyles.featureHighlight} ${compareStyles.bestFeature}`}>AI-driven</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="100"></div>
+                </div>
+              </div>
+            </td>
+            <td className={compareStyles.manualFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-dice ${compareStyles.featureIcon}`}></i>
+                <span>Guesswork</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="40"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className={compareStyles.featureNameCell}>Personalization</td>
+            <td className={compareStyles.aiFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-user-cog ${compareStyles.featureIcon}`}></i>
+                <span className={`${compareStyles.featureHighlight} ${compareStyles.bestFeature}`}>Energy & focus-based</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="85"></div>
+                </div>
+              </div>
+            </td>
+            <td className={compareStyles.manualFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-user ${compareStyles.featureIcon}`}></i>
+                <span>Basic preferences</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="50"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className={compareStyles.featureNameCell}>Updates</td>
+            <td className={compareStyles.aiFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-sync-alt ${compareStyles.featureIcon}`}></i>
+                <span className={compareStyles.featureHighlight}>Instant adjustments</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="95"></div>
+                </div>
+              </div>
+            </td>
+            <td className={compareStyles.manualFeatureCell}>
+              <div className={compareStyles.featureContent}>
+                <i className={`fas fa-eraser ${compareStyles.featureIcon}`}></i>
+                <span>Start from scratch</span>
+                <div className={compareStyles.featureProgressContainer}>
+                  <div className={compareStyles.featureProgressBar} data-value="25"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

@@ -7,6 +7,10 @@ import Overview from "./components/admincomponents/Overview";
 import Setting from "./components/admincomponents/Setting";
 import Teacher from "./components/admincomponents/Teacher";
 import Classes from "../../Frontend/src/pages/Admindash/Components/Classes/Classes";
+ import Loginad from "./pages/Login/Loginad";
+import LoginPer from "./pages/Login/Loginper";
+import Signupad from "../../Frontend/src/pages/Signupad";
+import SignupPer from "./pages/Signup/SignupPer";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +22,10 @@ function App() {
     <Route path="/Setting" element={<Setting/>}/>
     <Route path="/TeacherManagement" element={<Teacher/>}/>
     <Route path="/Classes"element={<Classes/>}/>
+    <Route path="/Loginad" element={<Loginad/>}/>
+    <Route path="/LoginPer" element={<LoginPer/>}/>
+    <Route path="/Signupad" element={<Signupad/>}/>
+    <Route path="/SignupPer" element={<SignupPer/>}/>
     </Routes>
   </BrowserRouter>
   );

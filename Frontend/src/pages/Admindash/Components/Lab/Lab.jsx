@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FlaskConical, Trash2, Plus, Beaker } from 'lucide-react';
+import { FlaskConical, Trash2, Plus, Beaker, Sparkles, Atom } from 'lucide-react';
 import axios from 'axios';
 import styles from './Lab.module.css';
 
@@ -26,6 +26,7 @@ const Lab = () => {
       setLabs(response.data);
     } catch (error) {
       console.error('Failed to fetch labs', error);
+      setError('Failed to fetch laboratories');
     }
     setLoading(false);
   };
@@ -33,6 +34,7 @@ const Lab = () => {
   const handleAdd = async () => {
     if (!newLab.trim()) {
       setError('Lab name cannot be empty.');
+      setTimeout(() => setError(''), 3000);
       return;
     }
     try {
@@ -43,6 +45,7 @@ const Lab = () => {
       };
       await axios.post('http://localhost:5000/api/labs', payload);
       setSuccess(`Lab "${newLab}" added successfully.`);
+      setTimeout(() => setSuccess(''), 3000);
       setNewLab('');
       setShowModal(false);
       fetchLabsByAdmin(user.id);
@@ -58,6 +61,7 @@ const Lab = () => {
       try {
         await axios.delete(`http://localhost:5000/api/labs/${id}?admin_id=${user.id}`);
         setSuccess(`Lab "${name}" deleted successfully.`);
+        setTimeout(() => setSuccess(''), 3000);
         fetchLabsByAdmin(user.id);
       } catch (error) {
         console.error('Error deleting lab:', error);
@@ -74,6 +78,7 @@ const Lab = () => {
         const parsedData = parseFileContent(reader.result);
         setLabs((prev) => [...prev, parsedData]);
         setSuccess(`Lab from file "${file.name}" uploaded successfully.`);
+        setTimeout(() => setSuccess(''), 3000);
       };
       reader.readAsText(file);
     }
@@ -88,73 +93,102 @@ const Lab = () => {
   };
 
   return (
-    <div className={styles.labManagerContainer}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Laboratory Management</h1>
-        <p className={styles.subtitle}>Streamlined lab space organization</p>
-      </div>
+    <div className={styles.animatedBackground}>
+      <div className={styles.container}>
+        <div className={styles.titleContainer}>
+          <Atom className={styles.titleIcon} size={32} />
+          <h2 className={styles.title}>Laboratory Management</h2>
+          <FlaskConical className={styles.titleIcon2} size={32} />
+        </div>
+        <p className={styles.subtitle}>Advanced lab space organization system</p>
 
-      {error && <div className={styles.errorBox}>{error}</div>}
-      {success && <div className={styles.successBox}>{success}</div>}
+        {error && (
+          <div className={styles.error}>
+            <span>{error}</span>
+          </div>
+        )}
 
-      <main className={styles.content}>
-        {loading ? (
-          <div className={styles.loadingState}>
-            <p>Loading laboratories...</p>
+        {success && (
+          <div className={styles.success}>
+            <span>{success}</span>
           </div>
-        ) : labs.length === 0 ? (
-          <div className={styles.emptyState}>
-            <FlaskConical size={64} className={styles.emptyIcon} />
-            <h3 className={styles.emptyTitle}>No laboratories found</h3>
-            <p className={styles.emptySubtitle}>
-              Start by adding your first lab to the system.
-            </p>
-          </div>
-        ) : (
-          <div className={styles.labGrid}>
-            {labs.map((lab) => (
-              <article key={lab.id} className={styles.labCard}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.labIcon}>
-                    <Beaker size={24} />
-                  </span>
-                  <h2 className={styles.labNumber}>{lab.lab_name}</h2>
+        )}
+
+        <main className={styles.content}>
+          {loading ? (
+            <div className={styles.loading}>
+              <div className={styles.loadingSpinner}></div>
+              <p>Analyzing laboratory systems...</p>
+            </div>
+          ) : labs.length === 0 ? (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyIcon}>
+                <FlaskConical size={64} />
+              </div>
+              <h3>No laboratories detected</h3>
+              <p>Initialize your first laboratory to begin scientific operations</p>
+            </div>
+          ) : (
+            <div className={styles.labGrid}>
+              {labs.map((lab) => (
+                <article key={lab.id} className={styles.labCard}>
+                  <div className={styles.cardGlow}></div>
+                  <div className={styles.cardHeader}>
+                    <div className={styles.labIcon}>
+                      <Beaker size={24} />
+                    </div>
+                    <div className={styles.labInfo}>
+                      <span className={styles.labLabel}>Laboratory</span>
+                      <h2 className={styles.labNumber}>{lab.lab_name}</h2>
+                    </div>
+                  </div>
                   <button
                     className={styles.deleteButton}
                     onClick={() => handleDelete(lab.id, lab.lab_name)}
                     aria-label={`Delete laboratory ${lab.lab_name}`}
                   >
-                    <Trash2 size={24} />
+                    <Trash2 size={18} />
                   </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-      </main>
+                </article>
+              ))}
+            </div>
+          )}
+        </main>
+      </div>
 
+      {/* Floating Action Button */}
       <button className={styles.fab} onClick={() => setShowModal(true)}>
         <Plus size={24} />
+        <span className={styles.fabRipple}></span>
       </button>
 
+      {/* Add Laboratory Modal */}
       <div className={`${styles.modal} ${showModal ? styles.active : ''}`}>
+        <div className={styles.modalBackdrop} onClick={() => setShowModal(false)}></div>
         <div className={styles.modalContent}>
-          <h3 style={{ marginBottom: '1rem', color: 'var(--text)' }}>
-            Add Laboratory
-          </h3>
-          <input
-            type="text"
-            value={newLab}
-            onChange={(e) => {
-              setNewLab(e.target.value);
-              setError('');
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') handleAdd();
-            }}
-            placeholder="Enter lab number (e.g., A101, B205)"
-            className={styles.modalInput}
-          />
+          <div className={styles.modalHeader}>
+            <div className={styles.modalIconWrapper}>
+              <Beaker size={24} />
+            </div>
+            <h3>Create New Laboratory</h3>
+            <p>Enter a unique laboratory identifier</p>
+          </div>
+          <div className={styles.inputContainer}>
+            <input
+              type="text"
+              value={newLab}
+              onChange={(e) => {
+                setNewLab(e.target.value);
+                setError('');
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleAdd();
+              }}
+              placeholder="Enter lab identifier (e.g., A101, CHEM-LAB-B)"
+              className={styles.modalInput}
+              autoFocus
+            />
+          </div>
           <div className={styles.modalButtons}>
             <button
               className={`${styles.modalBtn} ${styles.modalBtnSecondary}`}
@@ -166,12 +200,14 @@ const Lab = () => {
               className={`${styles.modalBtn} ${styles.modalBtnPrimary}`}
               onClick={handleAdd}
             >
-              Add
+              <Beaker size={16} />
+              Create Laboratory
             </button>
           </div>
         </div>
       </div>
 
+      {/* Hidden file input */}
       <input
         type="file"
         ref={fileInputRef}
@@ -179,6 +215,14 @@ const Lab = () => {
         onChange={handleFileUpload}
         accept=".pdf,.txt,.doc,.docx"
       />
+
+      {/* Background decorations */}
+      <div className={styles.bgDecoration}>
+        <div className={styles.bgCircle1}></div>
+        <div className={styles.bgCircle2}></div>
+        <div className={styles.bgCircle3}></div>
+        <div className={styles.bgCircle4}></div>
+      </div>
     </div>
   );
 };

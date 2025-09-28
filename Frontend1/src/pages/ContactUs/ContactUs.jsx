@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 // Icon components as SVGs since we can't import external libraries
 const MapPinIcon = ({ className }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -70,6 +70,7 @@ const LinkedInIcon = ({ className }) => (
 );
 
 const ContactUs = () => {
+   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -149,9 +150,9 @@ const ContactUs = () => {
   };
 
   const handleBack = () => {
-    // Navigate back functionality would go here
-    console.log('Navigate back to Landing');
+    navigate("/"); // 👈 replace "/" with your Landing page route if different
   };
+
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 overflow-x-hidden relative">

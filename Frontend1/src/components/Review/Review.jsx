@@ -1,5 +1,5 @@
-import React from 'react';
-import { Star } from 'lucide-react';
+import React from "react";
+import { Star } from "lucide-react";
 
 const reviews = [
   {
@@ -38,42 +38,42 @@ const Review = () => {
   const repeated = [...reviews, ...reviews]; // repeat for infinite loop
 
   return (
-    <div className="max-w-7xl mx-auto my-20 md:my-32 text-center px-6 md:px-8 lg:px-12 bg-transparent">
+    <div className="max-w-7xl mx-auto my-16 md:my-28 px-4 sm:px-6 lg:px-12 text-center">
       {/* Header */}
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-        <Star className="inline-block align-middle mr-2 md:mr-3 text-blue-600 dark:text-blue-400 w-6 h-6 md:w-8 md:h-8" />
+      <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <Star className="inline-block align-middle mr-2 text-blue-600 dark:text-blue-400 w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
         Why Pen & Paper Can't Compete
       </h1>
-      
-      <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-12 md:mb-20">
+
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-10 md:mb-16">
         Here's why people love our AI-powered scheduling
       </p>
 
       {/* Carousel */}
-      <div className="relative w-full overflow-hidden h-80 md:h-80 lg:h-80">
-        <div className="flex gap-8 md:gap-12 lg:gap-16 animate-scroll">
+      <div className="relative w-full overflow-hidden h-72 sm:h-80">
+        <div className="flex flex-nowrap gap-6 sm:gap-8 md:gap-12 animate-scroll">
           {repeated.map((review, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-80 md:w-96 lg:w-[480px] h-64 md:h-72 lg:h-[300px] bg-white dark:bg-gray-800 p-6 md:p-8 lg:p-10 rounded-2xl md:rounded-3xl shadow-lg dark:shadow-gray-900/20 flex flex-col justify-between border border-gray-100 dark:border-gray-700"
+              className="flex-shrink-0 w-64 sm:w-80 md:w-96 lg:w-[460px] h-60 sm:h-64 md:h-72 bg-white dark:bg-gray-800 p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl shadow-lg dark:shadow-gray-900/20 flex flex-col justify-between border border-gray-200 dark:border-gray-700"
             >
               {/* Quote */}
-              <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-center leading-relaxed mb-4 md:mb-6 text-gray-900 dark:text-gray-100">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
                 "{review.quote}"
-              </div>
+              </p>
 
               {/* Author */}
-              <div className="flex items-end gap-3">
+              <div className="flex items-center gap-3 mt-auto">
                 <img
                   src={review.img}
                   alt={review.name}
-                  className="w-8 h-8 md:w-10 md:h-10 rounded-full"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full"
                 />
-                <div className="text-left leading-tight">
-                  <div className="text-sm md:text-base font-semibold text-gray-900 dark:text-gray-100">
+                <div className="text-left">
+                  <div className="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-gray-100">
                     {review.name}
                   </div>
-                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400">
                     {review.title}
                   </div>
                 </div>
@@ -93,14 +93,14 @@ const Review = () => {
             transform: translateX(-50%);
           }
         }
-        
+
         .animate-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 40s linear infinite;
         }
-        
+
         @media (max-width: 768px) {
           .animate-scroll {
-            animation-duration: 50s;
+            animation-duration: 60s;
           }
         }
       `}</style>

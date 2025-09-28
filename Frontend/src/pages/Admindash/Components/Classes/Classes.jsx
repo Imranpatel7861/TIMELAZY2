@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Trash2, Building2 } from 'lucide-react';
+import { Plus, Trash2, Building2, Sparkles } from 'lucide-react';
 import styles from './Classes.module.css';
 
 const Classes = () => {
@@ -96,24 +96,45 @@ const Classes = () => {
   return (
     <div className={styles.animatedBackground}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Classroom Management</h2>
-        {error && <div className={styles.error}>{error}</div>}
+        <div className={styles.titleContainer}>
+          <Sparkles className={styles.titleIcon} size={32} />
+          <h2 className={styles.title}>Classroom Management</h2>
+        </div>
+        
+        {error && (
+          <div className={styles.error}>
+            <span>{error}</span>
+          </div>
+        )}
+        
         {loading ? (
-          <div className={styles.loading}>Loading classrooms...</div>
+          <div className={styles.loading}>
+            <div className={styles.loadingSpinner}></div>
+            <p>Loading classrooms...</p>
+          </div>
         ) : classrooms.length === 0 ? (
           <div className={styles.emptyState}>
-            <Building2 size={48} color="#9ca3af" />
-            <p>No classrooms found. Add one to get started.</p>
+            <div className={styles.emptyIcon}>
+              <Building2 size={64} />
+            </div>
+            <h3>No classrooms yet</h3>
+            <p>Create your first classroom to get started</p>
           </div>
         ) : (
           <div className={styles.grid}>
             {classrooms.map((classroom) => (
               <div key={classroom.id} className={styles.card}>
+                <div className={styles.cardGlow}></div>
                 <div className={styles.classInfo}>
-                  <Building2 size={24} color="#3b82f6" />
-                  <span className={styles.roomText}>
-                    Room {classroom.classroom_number}
-                  </span>
+                  <div className={styles.iconWrapper}>
+                    <Building2 size={24} />
+                  </div>
+                  <div className={styles.roomInfo}>
+                    <span className={styles.roomLabel}>Room</span>
+                    <span className={styles.roomNumber}>
+                      {classroom.classroom_number}
+                    </span>
+                  </div>
                 </div>
                 <button
                   className={styles.deleteBtn}
@@ -131,27 +152,33 @@ const Classes = () => {
       {/* Floating Action Button */}
       <button className={styles.fab} onClick={() => setShowModal(true)}>
         <Plus size={24} />
+        <span className={styles.fabRipple}></span>
       </button>
 
       {/* Add Classroom Modal */}
       <div className={`${styles.modal} ${showModal ? styles.active : ''}`}>
+        <div className={styles.modalBackdrop} onClick={() => setShowModal(false)}></div>
         <div className={styles.modalContent}>
-          <h3 style={{ marginBottom: '1rem', color: 'var(--text)' }}>
-            Add Classroom
-          </h3>
-          <input
-            type="number"
-            value={newClassroom}
-            onChange={(e) => {
-              setNewClassroom(e.target.value);
-              setError('');
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') handleAdd();
-            }}
-            placeholder="Classroom number"
-            className={styles.modalInput}
-          />
+          <div className={styles.modalHeader}>
+            <h3>Add New Classroom</h3>
+            <p>Enter a unique classroom number</p>
+          </div>
+          <div className={styles.inputContainer}>
+            <input
+              type="number"
+              value={newClassroom}
+              onChange={(e) => {
+                setNewClassroom(e.target.value);
+                setError('');
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleAdd();
+              }}
+              placeholder="Enter classroom number"
+              className={styles.modalInput}
+              autoFocus
+            />
+          </div>
           <div className={styles.modalButtons}>
             <button
               className={`${styles.modalBtn} ${styles.modalBtnSecondary}`}
@@ -163,10 +190,18 @@ const Classes = () => {
               className={`${styles.modalBtn} ${styles.modalBtnPrimary}`}
               onClick={handleAdd}
             >
-              Add
+              <Plus size={16} />
+              Add Classroom
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Background decorations */}
+      <div className={styles.bgDecoration}>
+        <div className={styles.bgCircle1}></div>
+        <div className={styles.bgCircle2}></div>
+        <div className={styles.bgCircle3}></div>
       </div>
     </div>
   );

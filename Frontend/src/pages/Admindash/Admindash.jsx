@@ -103,7 +103,7 @@ const Admindash = () => {
     { id: 'teachers', label: 'Faculty Management', icon: Users },
     { id: 'classes', label: 'Classroom Management', icon: BookOpen },
     { id: 'lab', label: 'Lab Management', icon: BookOpen },
-    { id: 'timetable', label: 'TimeLazy AI', icon: Clock }, // Corrected to 'timetable'
+    { id: 'timetable', label: 'TimeLazy AI', icon: Clock },
     { id: 'seating', label: 'Seating Planner', icon: Calendar },
     { id: 'settings', label: 'Settings', icon: Settings }
   ];
@@ -114,7 +114,7 @@ const Admindash = () => {
   };
 
   return (
-    <div className={styles.dashboard}>
+    <div className={styles.adminDashboard}>
       {/* Sidebar */}
       <div className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : styles.sidebarClosed}`}>
         <div className={styles.sidebarHeader}>
@@ -178,10 +178,9 @@ const Admindash = () => {
         <main className={styles.mainArea}>
           {activeTab === 'overview' && <Overview data={dashboardData} />}
           {activeTab === 'teachers' && <Teacher data={dashboardData} />}
-          {activeTab === 'students' && <Student data={dashboardData} />}
           {activeTab === 'classes' && <Classes data={dashboardData} />}
           {activeTab === 'lab' && <Lab data={dashboardData} />}
-          {activeTab === 'timetable' && <Timetable data={dashboardData} />} {/* Corrected to 'timetable' */}
+          {activeTab === 'timetable' && <Timetable data={dashboardData} />}
           {activeTab === 'seating' && <Seating data={dashboardData} />}
           {activeTab === 'settings' && <Setting />}
         </main>
