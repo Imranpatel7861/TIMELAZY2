@@ -136,7 +136,7 @@ const Loginad = () => {
               <span className={styles.checkmark}></span>
               Remember me
             </label>
-            <a href="/forgot-password" className={styles.forgotPassword}>Forgot Password?</a>
+            <a href="/forgotpassword" className={styles.forgotPassword}>Forgot Password?</a>
           </div>
           {errors.submit && <div className={styles.submitError}>{errors.submit}</div>}
           <button

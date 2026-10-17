@@ -135,9 +135,9 @@
 
 /* Floating Action Button */
 .fab {
-  position: fixed;
-  top:-15rem;
-  left: 78rem;
+ position: fixed;
+  bottom: -22rem;
+  right: -105rem;
   width: 4rem;
   height: 4rem;
   background: linear-gradient(135deg, var(--primary), var(--secondary));

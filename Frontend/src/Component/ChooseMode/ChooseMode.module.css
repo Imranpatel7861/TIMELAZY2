@@ -1,15 +1,3 @@
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --subtitle-color: #666;
-  --card-bg: #ffffff;
-  --card-text: #000000;
-  --card-subtext: #4a5568;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --hover-shadow: rgba(0, 0, 0, 0.15);
-  --checkmark-color: #38a169;
-}
-
 .modeSelectionContainer {
   max-width: 1400px;
   margin: 0 auto;

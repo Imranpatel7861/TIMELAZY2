@@ -483,8 +483,8 @@ const Seating = () => {
 
       // Define table headers based on seating mode
       const tableHeaders = seatingMode === "one"
-        ? [["Block Number", "Classroom", "Division", "Roll No. From", "Roll No. To", "Total"]]
-        : [["Block Number", "Classroom", "Division", "Roll No. From", "Roll No. To", "Total"]];
+        ? [["Sr.No", "Classroom", "Division", "Roll No. From", "Roll No. To", "Total"]]
+        : [["Sr No.", "Classroom", "Division", "Roll No. From", "Roll No. To", "Total"]];
 
       autoTable(doc, {
         head: tableHeaders,
@@ -521,6 +521,7 @@ const Seating = () => {
         const classroomArrangement = arrangement.filter(item => item.classroom === classroom.name);
         const seatingData = classroomArrangement.map(item => {
           if (seatingMode === "one") {
+            
             return [
               item.year,
               item.rollNumber,
